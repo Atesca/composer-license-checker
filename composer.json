@@ -47,7 +47,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-clover build/logs/coverage.xml",
-        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --coverage-filter src"
+        "test-ci": "php -d pcov.enabled=1 vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --coverage-filter src"
     },
     "config": {
         "sort-packages": true

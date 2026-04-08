@@ -35,14 +35,15 @@ class CheckCommandTest extends TestCase
     }
 
     #[Test]
-    public function it_fails_when_a_dependency_has_a_disallowed_license()
+    public function it_fails_when_a_dependency_has_a_disallowed_license(): void
     {
         $this->dependencyLoader
             ->allows('loadDependencies')
-            ->andReturn([new Dependency('some-dependency', '1.0', ['DISALLOWED'])]);
+            ->andReturn([new Dependency('some-dependency', '1.0', ['DISALLOWED'])])
+        ;
 
         $input = new ArrayInput([
-            '--composer' => 'path/to/composer',
+            '--composer'  => 'path/to/composer',
             '--allowlist' => ['ALLOWED_LICENSE'],
         ], $this->command->getDefinition());
 
@@ -59,10 +60,11 @@ class CheckCommandTest extends TestCase
             ->andReturn([
                 new Dependency('some-dependency', '4.20', ['MIT']),
                 new Dependency('other-dependency', '6.9', ['Apache-2.0']),
-            ]);
+            ])
+        ;
 
         $input = new ArrayInput([
-            '--composer' => 'path/to/composer',
+            '--composer'  => 'path/to/composer',
             '--allowlist' => [join(DIRECTORY_SEPARATOR, [__DIR__, 'allowlist.txt']), 'MIT'],
         ], $this->command->getDefinition());
 
@@ -75,10 +77,11 @@ class CheckCommandTest extends TestCase
     {
         $this->dependencyLoader
             ->allows('loadDependencies')
-            ->andReturn([new Dependency('some-dependency', '1.0', ['DISALLOWED_LICENSE'])]);
+            ->andReturn([new Dependency('some-dependency', '1.0', ['DISALLOWED_LICENSE'])])
+        ;
 
         $input = new ArrayInput([
-            '--composer' => 'path/to/composer',
+            '--composer'  => 'path/to/composer',
             '--blocklist' => [join(DIRECTORY_SEPARATOR, [__DIR__, 'blocklist.txt'])],
         ], $this->command->getDefinition());
 
