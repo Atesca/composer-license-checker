@@ -46,7 +46,7 @@ $reportCommand->setDependencyLoader(new DependencyLoader(new JSONDependencyParse
 $initCommand = new InitCommand;
 $initCommand->setDependencyLoader(new DependencyLoader(new JSONDependencyParser()));
 
-$application = new Application('composer-license-checker', '2.7.0');
+$application = new Application('composer-license-checker', '3.0.0');
 
 $application->addCommands([$checkCommand, $reportCommand, $initCommand]);
 
